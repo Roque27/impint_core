@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core;
+using System;
 
 namespace Launcher
 {
@@ -7,16 +8,18 @@ namespace Launcher
         static void Main(string[] args)
         {
             DateTime fecha = DateTime.Now;
-            Console.WriteLine("La Fecha actual es: " + fecha.ToString());
-            Console.WriteLine("");
-            Console.WriteLine("Preciona ESC");
-            do
+            using (var ord = new ControladorOrdenativos())
             {
-                while (!Console.KeyAvailable)
+                fecha = ord.Test();
+                Console.WriteLine("La Fecha actual es: " + fecha.ToString());
+                Console.WriteLine("");
+                Console.WriteLine("Preciona ESC");
+
+                do
                 {
-                    // Do something
-                }
-            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+                    while (!Console.KeyAvailable){}
+                } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+            }
         }
     }
 }

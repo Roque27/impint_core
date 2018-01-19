@@ -9,7 +9,7 @@ namespace AccesoDeDatos
     class QueryHandler
     {
         //static string ConeccionBBDD = ConfigurationManager.ConnectionStrings["connStrExc"].ConnectionString;
-        static string ConeccionBBDD = "Data Source=sict2;User Id=taxi;Password=lgas; Integrated Security = no;";
+        static string ConeccionBBDD = "Data Source=SICT2;User Id=lgas;Password=taxi; Integrated Security = no;";
 
         static public object ExecuteScalar(string StrSql, Dictionary<string, object> Dic_Param)
         {
