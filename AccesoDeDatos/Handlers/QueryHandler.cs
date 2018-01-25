@@ -6,7 +6,7 @@ using System.Data;
 
 namespace AccesoDeDatos
 {
-    class QueryHandler
+    public class QueryHandler
     {
         //static string ConeccionBBDD = ConfigurationManager.ConnectionStrings["connStrExc"].ConnectionString;
         static string ConeccionBBDD = "Data Source=SICT2;User Id=lgas;Password=taxi; Integrated Security = no;";

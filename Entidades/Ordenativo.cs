@@ -9,10 +9,10 @@ namespace Entidades
         int trt_numero { get; set; }
         int ord_numero { get; set; }
         int srv_codigo { get; set; }
-        short o.cnt_numero { get; set; }
+        int cnt_numero { get; set; }
         string tor_codigo { get; set; }
         DateTime ord_fecha_generacion { get; set; }
-        short u.scf_codigo { get; set; }
+        int scf_codigo { get; set; }
         string sec_codigo_origen { get; set; }
         string tor_grupo { get; set; }
         string tor_descripcion { get; set; }

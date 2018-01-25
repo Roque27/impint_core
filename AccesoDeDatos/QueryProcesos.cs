@@ -1,25 +1,18 @@
-﻿using Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Entidades;
 
 namespace AccesoDeDatos
 {
-    public class QueryOrdenativos
+    public class QueryProcesos : QueryHandler
     {
-        public QueryOrdenativos()
+        public QueryProcesos()
         {
-            
+
         }
 
-        public List<Ordenativo> ObtenerOrdenativoParaProcesar()
-        {
-            List<Ordenativo> lista = new List<Ordenativo>();
-
-            return lista;
-        }
-
-        public DateTime PruebaConeccion()
+        public Proceso IniciarNuevoProceso()
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 

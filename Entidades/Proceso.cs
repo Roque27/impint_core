@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Entidades
 {
-    class Proceso
+    public class Proceso
     {
-        int num_proceso { get; set; } //CargaProxNroProceso
-        int usr_numero { get; set; } //SeleccionaPersona
-        string tim_codigo { get; set; } //SeleccionaImpresora
-        string crr_genera_planilla { get; set; } //CargaPlantillas
-        int parametro_vencimiento { get; set; } //SeleccionaParametroDeVencimiento
+        public int Numero { get; set; } //CargaProxNroProceso
+        public int NroUsuario { get; set; } //SeleccionaPersona
+        public string TimCodigo { get; set; } //SeleccionaImpresora
+        public string GeneraDocCorreo { get; set; } //CargaPlantillas
+        public int ParametroDeVencimiento { get; set; } //SeleccionaParametroDeVencimiento
     }
 }
