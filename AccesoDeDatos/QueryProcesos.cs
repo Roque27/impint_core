@@ -14,13 +14,14 @@ namespace AccesoDeDatos
 
         public Proceso IniciarNuevoProceso()
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            Proceso p = null;
+            //Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            string queryDB = "SELECT SYSDATE " +
-                             "FROM DUAL ";
+            //string queryDB = "SELECT SYSDATE " +
+            //                 "FROM DUAL ";
 
-            DateTime dt = Convert.ToDateTime(QueryHandler.ExecuteScalar(queryDB, parameters));
-            return dt;
+            //DateTime dt = Convert.ToDateTime(QueryHandler.ExecuteScalar(queryDB, parameters));
+            return p;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,13 @@ namespace Core
 {
     public class ControladorMaestro : IDisposable
     {
+        public List<CacheElemento> ObtenerCacheDeElementos()
+        {
+            List<CacheElemento> cache = null;
+
+            return cache;
+        }
+
         protected bool Disposed;
 
         public ControladorMaestro()

@@ -1,0 +1,162 @@
+﻿[
+  // *************** TABLA PERSONAS ***************
+  {
+    "Key": "Personas",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA CONTRATOS ***************
+  {
+    "Key": "Contratos",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA SERVICIOS ***************
+  {
+    "Key": "Servicios",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA LECTURAS ***************
+  {
+    "Key": "Lecturas",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA ORDENATIVOS ***************
+  {
+    "Key": "Ordenativos",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA POTENCIAS ***************
+  {
+    "Key": "Potencias",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA STOCKEQUIPOS ***************
+  {
+    "Key": "StockEquipos",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA SUCURSALES ***************
+  {
+    "Key": "Sucursales",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA BANCOS ***************
+  {
+    "Key": "Bancos",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA CARGOS ***************
+  {
+    "Key": "Cargos",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA TIPOSIVA ***************
+  {
+    "Key": "TiposIVA",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA TARIFAS ***************
+  {
+    "Key": "Tarifas",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA DOCUMENTOS ***************
+  {
+    "Key": "Documentos",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA TOTALES TRAMITES ***************
+  {
+    "Key": "TotalesTramites",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA USUARIOS ***************
+  {
+    "Key": "Usuarios",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  },
+  // *************** TABLA PRS NUM ORI ***************
+  {
+    "Key": "PrsNumOri",
+    "FromTabla": null,
+    "Columnas": {
+      "Columna": "",
+      "Expresion": "",
+      "Metodo": ""
+    }
+  }
+]
