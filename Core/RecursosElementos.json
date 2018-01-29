@@ -2,161 +2,209 @@
   // *************** TABLA PERSONAS ***************
   {
     "Key": "Personas",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": "FROM PERSONAS P INNER JOIN CALLES C ON (C.AGF_CODIGO = P.AGF_CODIGO AND C.CLL_CODIGO = P.CLL_CODIGO) ",
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA CONTRATOS ***************
   {
     "Key": "Contratos",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA SERVICIOS ***************
   {
     "Key": "Servicios",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA LECTURAS ***************
   {
     "Key": "Lecturas",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA ORDENATIVOS ***************
   {
     "Key": "Ordenativos",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA POTENCIAS ***************
   {
     "Key": "Potencias",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA STOCKEQUIPOS ***************
   {
     "Key": "StockEquipos",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA SUCURSALES ***************
   {
     "Key": "Sucursales",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA BANCOS ***************
   {
     "Key": "Bancos",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA CARGOS ***************
   {
     "Key": "Cargos",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA TIPOSIVA ***************
   {
     "Key": "TiposIVA",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA TARIFAS ***************
   {
     "Key": "Tarifas",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA DOCUMENTOS ***************
   {
     "Key": "Documentos",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA TOTALES TRAMITES ***************
   {
     "Key": "TotalesTramites",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA USUARIOS ***************
   {
     "Key": "Usuarios",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   },
   // *************** TABLA PRS NUM ORI ***************
   {
     "Key": "PrsNumOri",
-    "FromTabla": null,
-    "Columnas": {
-      "Columna": "",
-      "Expresion": "",
-      "Metodo": ""
-    }
+    "From": null,
+    "Where": "",
+    "Columnas": [
+      {
+        "Columna": "",
+        "Expresion": "",
+        "Metodo": "Read"
+      }
+    ]
   }
 ]

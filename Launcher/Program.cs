@@ -9,7 +9,9 @@ namespace Launcher
         {
             Startup startup = new Startup();
 
+            ControladorMaestro c = new ControladorMaestro();
 
+            var cache = c.ObtenerCacheDeElementos();
 
             //DateTime fecha = DateTime.Now;
             //using (var ord = new ControladorOrdenativos())

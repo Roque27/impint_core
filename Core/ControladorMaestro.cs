@@ -1,16 +1,23 @@
 ﻿using Entidades;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Core
 {
     public class ControladorMaestro : IDisposable
     {
+        string JSONfile = @"..\\Core\\RecursosElementos.json";
         public List<CacheElemento> ObtenerCacheDeElementos()
         {
             List<CacheElemento> cache = null;
-
+            using(StreamReader file = File.OpenText(JSONfile))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                cache = (List<CacheElemento>)serializer.Deserialize(file, typeof(List<CacheElemento>));
+            }
             return cache;
         }
 
