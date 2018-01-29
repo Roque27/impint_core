@@ -6,6 +6,7 @@ namespace Entidades
 {
     public enum MetodoExtension
     {
+        Read,
         ReadInt,
         ReadFullInt,
         ReadString,

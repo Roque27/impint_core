@@ -9,10 +9,13 @@ namespace Entidades
     {
         [JsonProperty("Key")]
         public string Key { get; set; }
+
         [JsonProperty("From")]
         public string From { get; set; }
+
         [JsonProperty("Where")]
         public string Where { get; set; }
+
         [JsonProperty("Columnas")]
         public List<CacheColumna> Columnas { get; set; }
 
