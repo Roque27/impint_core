@@ -3,12 +3,98 @@
   {
     "Key": "Personas",
     "From": "FROM PERSONAS P INNER JOIN CALLES C ON (C.AGF_CODIGO = P.AGF_CODIGO AND C.CLL_CODIGO = P.CLL_CODIGO) ",
-    "Where": "",
+    "Where": "WHERE P.PRS_NUMERO = {$prs_num}",
+    "Parametros": [ { "Parametro": "prs_num", "Tipo": "Int32" } ],
     "Columnas": [
       {
-        "Columna": "",
+        "Columna": "PRS_NUMERO",
+        "Expresion": "P.PRS_NUMERO AS PRS_NUMERO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_RAZON_SOCIAL",
+        "Expresion": "P.PRS_RAZON_SOCIAL",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_CUIT",
+        "Expresion": "TO_CHAR(COALESCE(NVL(P.PRS_CUIT, 0), 0)) AS PRS_CUIT",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_TIPO_DOC",
+        "Expresion": "COALESCE(NVL(P.PRS_TIPO_DOC, ''), '0') AS PRS_TIPO_DOC",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_DOCUMENTO",
+        "Expresion": "COALESCE(NVL(P.PRS_DOCUMENTO, 0), 0) AS PRS_DOCUMENTO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_NRO",
+        "Expresion": "COALESCE(NVL(P.PRS_NRO, 0), '0') AS PRS_NRO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_DEPTO",
+        "Expresion": "COALESCE(NVL(P.PRS_DEPTO, ''), '0') AS PRS_DEPTO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "AGF_CODIGO",
+        "Expresion": "NVL(P.AGF_CODIGO, 0) AS AGF_CODIGO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_C_POSTAL",
+        "Expresion": "COALESCE(NVL(P.PRS_C_POSTAL, ''), '0') AS PRS_C_POSTAL",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_TELEFONOS",
+        "Expresion": "COALESCE(NVL(P.PRS_TELEFONOS, 0), '0') AS PRS_TELEFONOS",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_FAX",
+        "Expresion": "COALESCE(NVL(P.PRS_FAX, 0), '0') AS PRS_FAX",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_ESTADO",
+        "Expresion": "COALESCE(NVL(P.PRS_ESTADO, ''), '0') AS PRS_ESTADO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_PISO",
+        "Expresion": "COALESCE(NVL(P.PRS_PISO, 0), '0') AS PRS_PISO",
+        "Metodo": ""
+      },
+      {
+        "Columna": "CLL_NOMBRE",
+        "Expresion": "TRIM(COALESCE(NVL(C.CLL_NOMBRE, ''), '0')) AS PRS_DIRECCION",
+        "Metodo": ""
+      },
+      {
+        "Columna": "PRS_LOCALIDAD",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
+      },
+      {
+        "Columna": "",
+        "Expresion": "COALESCE(NVL(DECODE(P.PRS_BIS, 'N', ' ', P.PRS_BIS), ' '), '0') AS PRS_BIS",
+        "Metodo": ""
+      },
+      {
+        "Columna": "",
+        "Expresion": "COALESCE(NVL(P.PRS_TORRE, ' '), '0') AS PRS_TORRE",
+        "Metodo": ""
+      },
+      {
+        "Columna": "",
+        "Expresion": "COALESCE(NVL(P.PRS_TORRE, ' '), '0') AS PRS_TORRE",
+        "Metodo": ""
       }
     ]
   },
@@ -21,7 +107,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -34,7 +120,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -47,7 +133,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -60,7 +146,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -73,7 +159,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -86,7 +172,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -99,7 +185,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -112,7 +198,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -125,7 +211,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -138,7 +224,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -151,7 +237,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -164,7 +250,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -177,7 +263,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -190,7 +276,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   },
@@ -203,7 +289,7 @@
       {
         "Columna": "",
         "Expresion": "",
-        "Metodo": "Read"
+        "Metodo": ""
       }
     ]
   }
