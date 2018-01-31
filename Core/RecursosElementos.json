@@ -82,18 +82,8 @@
         "Metodo": ""
       },
       {
-        "Columna": "",
-        "Expresion": "COALESCE(NVL(DECODE(P.PRS_BIS, 'N', ' ', P.PRS_BIS), ' '), '0') AS PRS_BIS",
-        "Metodo": ""
-      },
-      {
-        "Columna": "",
-        "Expresion": "COALESCE(NVL(P.PRS_TORRE, ' '), '0') AS PRS_TORRE",
-        "Metodo": ""
-      },
-      {
-        "Columna": "",
-        "Expresion": "COALESCE(NVL(P.PRS_TORRE, ' '), '0') AS PRS_TORRE",
+        "Columna": "PRS_DIRECCION",
+        "Expresion": "COALESCE(NVL(DECODE(P.PRS_BIS, 'N', ' ', P.PRS_BIS), ' '), '0') AS PRS_BIS, COALESCE(NVL(P.PRS_NRO, 0), '0') AS PRS_NRO, COALESCE(NVL(P.PRS_TORRE, ' '), '0') AS PRS_TORRE, COALESCE(NVL(P.PRS_PISO, 0), '0') AS PRS_PISO, COALESCE(NVL(P.PRS_DEPTO, ''), '0') AS PRS_DEPTO, COALESCE(NVL(P.PRS_C_POSTAL, ''), '0') AS PRS_C_POSTAL",
         "Metodo": ""
       }
     ]
