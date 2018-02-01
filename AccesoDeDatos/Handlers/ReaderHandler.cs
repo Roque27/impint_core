@@ -40,8 +40,8 @@ namespace AccesoDeDatos.Handlers
             var value = reader[column];
 
             return DBNull.Value.Equals(value)
-                       ? "0"
-                       : (value).ToString();
+                       ? String.Empty
+                       : (value).ToString().Trim();
         }
 
         public static string ReadDateString(this OracleDataReader reader, string column)
