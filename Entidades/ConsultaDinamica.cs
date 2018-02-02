@@ -6,8 +6,9 @@ namespace Entidades
 {
     public class ConsultaDinamica
     {
-        public string query { get; set; }
-        public Dictionary<string,string> parametros { get; set; }
-        public Dictionary<string, MetodoExtension> meotodosColumnas { get; set; }
+        public string Tabla { get; set; }
+        public string Query { get; set; }
+        public Dictionary<string,string> Parametros { get; set; }
+        public Dictionary<string, MetodoExtension> MeotodosColumnas { get; set; }
     }
 }

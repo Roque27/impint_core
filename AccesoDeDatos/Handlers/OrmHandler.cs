@@ -46,5 +46,12 @@ namespace AccesoDeDatos.Handlers
             }
             return p;
         }
+
+        public static List<string> Read(OracleDataReader r, string col, MetodoExtension metodo)
+        {
+            List<string> filas = null;
+
+            return filas;
+        }
     }
 }
