@@ -32,7 +32,7 @@ namespace AccesoDeDatos.Handlers
 
         public static string ReadString(this OracleDataReader reader, string column)
         {
-            return reader[column].ToString();
+            return reader[column].ToString().Trim();
         }
 
         public static string ReadFullString(this OracleDataReader reader, string column)
@@ -44,14 +44,14 @@ namespace AccesoDeDatos.Handlers
                        : (value).ToString().Trim();
         }
 
-        public static string ReadDateString(this OracleDataReader reader, string column)
-        {
-            return Convert.ToDateTime(reader[column]).ToString("dd/mm/yyyy");
-        }
-
         public static DateTime ReadDateTime(this OracleDataReader reader, string column)
         {
             return Convert.ToDateTime(reader[column]);
+        }
+
+        public static string ReadDateTimeString(this OracleDataReader reader, string column, string formato)
+        {
+            return reader.ReadDateTime(column).ToString(formato);
         }
     }
 }

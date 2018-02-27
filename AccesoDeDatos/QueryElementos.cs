@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OracleClient;
 using System.Text;
+using System.Linq;
 
 namespace AccesoDeDatos
 {
@@ -14,6 +15,8 @@ namespace AccesoDeDatos
         {
             string ConnStr = QueryHandler.ConeccionBBDD;
             List<DatoExtraccion> datos = new List<DatoExtraccion>();
+
+            List<String> lista = new List<String>();
 
             using (OracleConnection connection = new OracleConnection(ConnStr))
             {
@@ -32,8 +35,13 @@ namespace AccesoDeDatos
                     {
                         if (reader.Read())
                         {
-                            foreach(var c in q.MeotodosColumnas)
-                                Tabla.Columnas.Add(c.Key, OrmHandler.Read(reader, c.Key, c.Value));
+                            foreach (var c in q.MeotodosColumnas)
+                            {
+                                if (Tabla.Columnas.Keys.Any( x => x.Equals(c.Key)))
+                                    Tabla.Columnas[c.Key].Add(OrmHandler.Read(reader, c.Key, c.Value));
+                                else
+                                    Tabla.Columnas.Add(c.Key, new List<string>() { OrmHandler.Read(reader, c.Key, c.Value) });
+                            }
                         }
                         reader.Close();
                     }

@@ -47,11 +47,35 @@ namespace AccesoDeDatos.Handlers
             return p;
         }
 
-        public static List<string> Read(OracleDataReader r, string col, MetodoExtension metodo)
+        public static string Read(OracleDataReader r, string col, MetodoExtension metodo)
         {
-            List<string> filas = null;
+            string dato = null;
 
-            return filas;
+            switch (metodo)
+            {
+                case MetodoExtension.Read:
+                    dato = r[col].ToString();
+                    break;
+                case MetodoExtension.ReadDateString:
+                    dato = r.ReadDateTimeString(col, "dd/MM/yyyy");
+                    break;
+                //case MetodoExtension.ReadDateTime:
+                //    dato = r.ReadDateTime(col);
+                //    break;
+                case MetodoExtension.ReadFullInt:
+                    dato = r.ReadFullInt(col).ToString();
+                    break;
+                case MetodoExtension.ReadFullString:
+                    dato = r.ReadFullString(col);
+                    break;
+                case MetodoExtension.ReadInt:
+                    dato = r.ReadInt(col).ToString();
+                    break;
+                case MetodoExtension.ReadString:
+                    dato = r.ReadString(col);
+                    break;
+            }
+            return dato;
         }
     }
 }
