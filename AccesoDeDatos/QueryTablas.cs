@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AccesoDeDatos
 {
-    public class QueryTablas
+    public class QueryTablas : IDisposable
     {
         public Dictionary<string, List<string>> DatosProcesados { get; private set; }
 
@@ -14,7 +14,55 @@ namespace AccesoDeDatos
             switch(datos.Tabla)
             {
                 case "Personas":
-                    this.DatosProcesados = Personas(datos.);
+                    this.DatosProcesados = Personas(datos.Columnas);
+                    break;
+                case "Contratos":
+                    this.DatosProcesados = Contratos(datos.Columnas);
+                    break;
+                case "Servicios":
+                    this.DatosProcesados = Servicios(datos.Columnas);
+                    break;
+                case "Lecturas":
+                    this.DatosProcesados = Lecturas(datos.Columnas);
+                    break;
+                case "Ordenativos":
+                    this.DatosProcesados = Ordenativos(datos.Columnas);
+                    break;
+                case "Potencias":
+                    this.DatosProcesados = Potencias(datos.Columnas);
+                    break;
+                case "StockEquipos":
+                    this.DatosProcesados = StockEquipos(datos.Columnas);
+                    break;
+                case "Sucursales":
+                    this.DatosProcesados = Sucursales(datos.Columnas);
+                    break;
+                case "Bancos":
+                    this.DatosProcesados = Bancos(datos.Columnas);
+                    break;
+                case "Cargos":
+                    this.DatosProcesados = Cargos(datos.Columnas);
+                    break;
+                case "TiposIVA":
+                    this.DatosProcesados = TiposIVA(datos.Columnas);
+                    break;
+                case "Tarifas":
+                    this.DatosProcesados = Tarifas(datos.Columnas);
+                    break;
+                case "Documentos":
+                    this.DatosProcesados = Documentos(datos.Columnas);
+                    break;
+                case "TotalesTramites":
+                    this.DatosProcesados = TotalesTramites(datos.Columnas);
+                    break;
+                case "Usuarios":
+                    this.DatosProcesados = Usuarios(datos.Columnas);
+                    break;
+                case "PrsNumOri":
+                    this.DatosProcesados = PrsNumOri(datos.Columnas);
+                    break;
+                default:
+                    this.DatosProcesados = datos.Columnas;
                     break;
             }
         }
@@ -97,6 +145,17 @@ namespace AccesoDeDatos
         private Dictionary<string, List<string>> PrsNumOri(Dictionary<string, List<string>> datos)
         {
             return datos;
+        }
+
+        public void Dispose()
+        {
+            this.DatosProcesados = null;
+            GC.SuppressFinalize(this);
+        }
+
+        ~QueryTablas()
+        {
+            this.Dispose();
         }
     }
 }
