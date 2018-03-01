@@ -13,6 +13,8 @@ namespace AccesoDeDatos
     {
         public List<DatoExtraccion> ObtenerListaElementos(List<ConsultaDinamica> queryes)
         {
+            QueryTablas _procesosTabla;
+
             string ConnStr = QueryHandler.ConeccionBBDD;
             List<DatoExtraccion> datos = new List<DatoExtraccion>();
 
@@ -45,6 +47,9 @@ namespace AccesoDeDatos
                         }
                         reader.Close();
                     }
+
+                    Tabla.Columnas = (new QueryTablas(Tabla)).DatosProcesados;
+
                     datos.Add(Tabla);
                 }
             }
