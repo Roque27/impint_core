@@ -47,35 +47,51 @@ namespace AccesoDeDatos.Handlers
             return p;
         }
 
-        public static string Read(OracleDataReader r, string col, MetodoExtension metodo)
+        static public List<Ordenativo> GetOrmOrdenativos(string StrSql, Dictionary<string, object> Dic_Param)
         {
-            string dato = null;
+            string ConnStr = ConeccionBBDD;
+            List<Ordenativo> lista = new List<Ordenativo>();
 
-            switch (metodo)
+            using (OracleConnection connection = new OracleConnection(ConnStr))
             {
-                case MetodoExtension.Read:
-                    dato = r[col].ToString();
-                    break;
-                case MetodoExtension.ReadDateString:
-                    dato = r.ReadDateTimeString(col, "dd/MM/yyyy");
-                    break;
-                //case MetodoExtension.ReadDateTime:
-                //    dato = r.ReadDateTime(col);
-                //    break;
-                case MetodoExtension.ReadFullInt:
-                    dato = r.ReadFullInt(col).ToString();
-                    break;
-                case MetodoExtension.ReadFullString:
-                    dato = r.ReadFullString(col);
-                    break;
-                case MetodoExtension.ReadInt:
-                    dato = r.ReadInt(col).ToString();
-                    break;
-                case MetodoExtension.ReadString:
-                    dato = r.ReadString(col);
-                    break;
+                connection.Open();
+
+                using (OracleCommand cmd = new OracleCommand(StrSql, connection))
+                {
+                    foreach (string key in Dic_Param.Keys)
+                        cmd.Parameters.Add(new OracleParameter(key, Dic_Param[key]));
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Ordenativo
+                            {
+                                trt_numero = Convert.ToInt32(reader["cpr_numero"]),
+                                ord_numero = Convert.ToInt32(reader["cpr_numero"]),
+                                srv_codigo = Convert.ToInt32(reader["cpr_numero"]),
+                                cnt_numero = Convert.ToInt32(reader["cpr_numero"]),
+                                tor_codigo = Convert.ToString(reader["tim_codigo"]),
+                                ord_fecha_generacion = Convert.ToDateTime(reader["cpr_numero"]),
+                                scf_codigo = Convert.ToInt32(reader["cpr_numero"]),
+                                sec_codigo_origen = Convert.ToString(reader["tim_codigo"]),
+                                tor_grupo = Convert.ToString(reader["tim_codigo"]),
+                                tor_descripcion = Convert.ToString(reader["tim_codigo"]).Trim(),
+                                prs_numero = Convert.ToInt32(reader["cpr_numero"]),
+                                //datos_geograficos = ,
+                                rowid = Convert.ToString(reader["tim_codigo"]),
+                                crr_tipo = Convert.ToString(reader["tim_codigo"]),
+                                crr_codigo = Convert.ToString(reader["tim_codigo"]),
+                                //not_codigo = "", //ObtenerNotCodigo
+                                //nro_aviso = "",  //SeleccionarNroAviso
+                            });
+                        }
+                        reader.Close();
+                    }
+                }
+                connection.Close();
             }
-            return dato;
+            return p;
         }
     }
 }

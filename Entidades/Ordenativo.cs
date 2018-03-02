@@ -6,26 +6,26 @@ namespace Entidades
 {
     public class Ordenativo
     {
-        int trt_numero { get; set; }
-        int ord_numero { get; set; }
-        int srv_codigo { get; set; }
-        int cnt_numero { get; set; }
-        string tor_codigo { get; set; }
-        DateTime ord_fecha_generacion { get; set; }
-        int scf_codigo { get; set; }
-        string sec_codigo_origen { get; set; }
-        string tor_grupo { get; set; }
-        string tor_descripcion { get; set; }
-        int prs_numero { get; set; }
-        Direccion datos_geograficos { get; set; }
-        string rowid { get; set; }
-        string crr_tipo { get; set; }
-        string crr_codigo { get; set; }
+        public int trt_numero { get; set; }
+        public int ord_numero { get; set; }
+        public int srv_codigo { get; set; }
+        public int cnt_numero { get; set; }
+        public string tor_codigo { get; set; }
+        public DateTime ord_fecha_generacion { get; set; }
+        public int scf_codigo { get; set; }
+        public string sec_codigo_origen { get; set; }
+        public string tor_grupo { get; set; }
+        public string tor_descripcion { get; set; }
+        public int prs_numero { get; set; }
+        public Direccion datos_geograficos { get; set; }
+        public string rowid { get; set; }
+        public string crr_tipo { get; set; }
+        public string crr_codigo { get; set; }
 
-        int not_codigo { get; set; } //ObtenerNotCodigo
-        int nro_aviso { get; set; } //SeleccionarNroAviso
+        public int not_codigo { get; set; } //ObtenerNotCodigo
+        public int nro_aviso { get; set; } //SeleccionarNroAviso
 
-        List<Elemento> listaColumnas{ get; set; }
+        public List<Elemento> listaColumnas{ get; set; }
 
         public Ordenativo()
         {

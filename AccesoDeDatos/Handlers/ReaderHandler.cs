@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data.OracleClient;
 using System.Text;
@@ -7,6 +8,37 @@ namespace AccesoDeDatos.Handlers
 {
     static public class ReaderHandler
     {
+        public static string Read(OracleDataReader r, string col, MetodoExtension metodo)
+        {
+            string dato = null;
+
+            switch (metodo)
+            {
+                case MetodoExtension.Read:
+                    dato = r[col].ToString();
+                    break;
+                case MetodoExtension.ReadDateString:
+                    dato = r.ReadDateTimeString(col, "dd/MM/yyyy");
+                    break;
+                //case MetodoExtension.ReadDateTime:
+                //    dato = r.ReadDateTime(col);
+                //    break;
+                case MetodoExtension.ReadFullInt:
+                    dato = r.ReadFullInt(col).ToString();
+                    break;
+                case MetodoExtension.ReadFullString:
+                    dato = r.ReadFullString(col);
+                    break;
+                case MetodoExtension.ReadInt:
+                    dato = r.ReadInt(col).ToString();
+                    break;
+                case MetodoExtension.ReadString:
+                    dato = r.ReadString(col);
+                    break;
+            }
+            return dato;
+        }
+
         public static T Read<T>(this OracleDataReader reader, string column, T defaultValue = default(T))
         {
             var value = reader[column];

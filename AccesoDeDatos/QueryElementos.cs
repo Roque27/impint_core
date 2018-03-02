@@ -38,9 +38,9 @@ namespace AccesoDeDatos
                             foreach (var c in q.MeotodosColumnas)
                             {
                                 if (Tabla.Columnas.Keys.Any( x => x.Equals(c.Key)))
-                                    Tabla.Columnas[c.Key].Add(OrmHandler.Read(reader, c.Key, c.Value));
+                                    Tabla.Columnas[c.Key].Add(ReaderHandler.Read(reader, c.Key, c.Value));
                                 else
-                                    Tabla.Columnas.Add(c.Key, new List<string>() { OrmHandler.Read(reader, c.Key, c.Value) });
+                                    Tabla.Columnas.Add(c.Key, new List<string>() { ReaderHandler.Read(reader, c.Key, c.Value) });
                             }
                         }
                         reader.Close();
