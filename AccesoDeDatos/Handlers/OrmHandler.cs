@@ -47,7 +47,7 @@ namespace AccesoDeDatos.Handlers
             return p;
         }
 
-        static public List<Ordenativo> GetOrmOrdenativos(string StrSql, Dictionary<string, object> Dic_Param)
+        static public List<Ordenativo> GetOrmOrdenativosBase(string StrSql, Dictionary<string, object> Dic_Param)
         {
             string ConnStr = ConeccionBBDD;
             List<Ordenativo> lista = new List<Ordenativo>();
@@ -78,12 +78,10 @@ namespace AccesoDeDatos.Handlers
                                 tor_grupo = Convert.ToString(reader["tim_codigo"]),
                                 tor_descripcion = Convert.ToString(reader["tim_codigo"]).Trim(),
                                 prs_numero = Convert.ToInt32(reader["cpr_numero"]),
-                                //datos_geograficos = ,
                                 rowid = Convert.ToString(reader["tim_codigo"]),
                                 crr_tipo = Convert.ToString(reader["tim_codigo"]),
                                 crr_codigo = Convert.ToString(reader["tim_codigo"]),
-                                //not_codigo = "", //ObtenerNotCodigo
-                                //nro_aviso = "",  //SeleccionarNroAviso
+                                nro_aviso = Convert.ToString(reader["numero"])
                             });
                         }
                         reader.Close();
@@ -91,7 +89,35 @@ namespace AccesoDeDatos.Handlers
                 }
                 connection.Close();
             }
-            return p;
+            return lista;
+        }
+
+        static public List<Tuple<string, string, string>> GetOrmOrdenativosNotCodigo(string StrSql, Dictionary<string, object> Dic_Param)
+        {
+            string ConnStr = ConeccionBBDD;
+            List<Tuple<string, string, string>> lista = new List<Tuple<string, string, string>>();
+
+            using (OracleConnection connection = new OracleConnection(ConnStr))
+            {
+                connection.Open();
+
+                using (OracleCommand cmd = new OracleCommand(StrSql, connection))
+                {
+                    foreach (string key in Dic_Param.Keys)
+                        cmd.Parameters.Add(new OracleParameter(key, Dic_Param[key]));
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(Tuple.Create());
+                        }
+                        reader.Close();
+                    }
+                }
+                connection.Close();
+            }
+            return lista;
         }
     }
 }

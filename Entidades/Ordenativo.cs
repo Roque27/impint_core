@@ -17,13 +17,14 @@ namespace Entidades
         public string tor_grupo { get; set; }
         public string tor_descripcion { get; set; }
         public int prs_numero { get; set; }
-        public Direccion datos_geograficos { get; set; }
         public string rowid { get; set; }
         public string crr_tipo { get; set; }
         public string crr_codigo { get; set; }
+        public string nro_aviso { get; set; } //SeleccionarNroAviso
 
         public int not_codigo { get; set; } //ObtenerNotCodigo
-        public int nro_aviso { get; set; } //SeleccionarNroAviso
+
+        public Direccion datos_geograficos { get; set; }
 
         public List<Elemento> listaColumnas{ get; set; }
 
