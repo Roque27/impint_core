@@ -6,6 +6,7 @@ namespace Entidades
 {
     public class Ordenativo
     {
+        public string rowid { get; set; }
         public int trt_numero { get; set; }
         public int ord_numero { get; set; }
         public int srv_codigo { get; set; }
@@ -17,12 +18,11 @@ namespace Entidades
         public string tor_grupo { get; set; }
         public string tor_descripcion { get; set; }
         public int prs_numero { get; set; }
-        public string rowid { get; set; }
         public string crr_tipo { get; set; }
         public string crr_codigo { get; set; }
         public string nro_aviso { get; set; } //SeleccionarNroAviso
 
-        public int not_codigo { get; set; } //ObtenerNotCodigo
+        public string not_codigo { get; set; } //ObtenerNotCodigo
 
         public Direccion datos_geograficos { get; set; }
 

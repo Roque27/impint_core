@@ -6,16 +6,16 @@ namespace Entidades
 {
     public class Direccion
     {
-        int prs_numero { get; set; }
-        string prs_razon_social { get; set; }
-        string prs_direccion { get; set; }
-        string cfc_codigo { get; set; }
-        string calle_nombre { get; set; }
-        string calle_numero { get; set; }
-        string piso { get; set; }
-        string departamento { get; set; }
-        string torre { get; set; }
-        string cod_postal { get; set; }
-        string agf_nombre { get; set; }
+        public int prs_numero { get; set; }
+        public string prs_razon_social { get; set; }
+        public string prs_direccion { get; set; }
+        public string cfc_codigo { get; set; }
+        public string calle_nombre { get; set; }
+        public string calle_numero { get; set; }
+        public string piso { get; set; }
+        public string departamento { get; set; }
+        public string torre { get; set; }
+        public string cod_postal { get; set; }
+        public string agf_nombre { get; set; }
     }
 }

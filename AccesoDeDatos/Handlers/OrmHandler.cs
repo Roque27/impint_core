@@ -110,7 +110,35 @@ namespace AccesoDeDatos.Handlers
                     {
                         while (reader.Read())
                         {
-                            lista.Add(Tuple.Create());
+                            lista.Add(Tuple.Create(Convert.ToString(reader["tor_codigo"]), Convert.ToString(reader["cfc_codigo"]), Convert.ToString(reader["not_codigo"])));
+                        }
+                        reader.Close();
+                    }
+                }
+                connection.Close();
+            }
+            return lista;
+        }
+
+        static public List<Tuple<string, string, string>> GetOrmOrdenativosDatosGeograficos(string StrSql, Dictionary<string, object> Dic_Param)
+        {
+            string ConnStr = ConeccionBBDD;
+            List<Tuple<string, string, string>> lista = new List<Tuple<string, string, string>>();
+
+            using (OracleConnection connection = new OracleConnection(ConnStr))
+            {
+                connection.Open();
+
+                using (OracleCommand cmd = new OracleCommand(StrSql, connection))
+                {
+                    foreach (string key in Dic_Param.Keys)
+                        cmd.Parameters.Add(new OracleParameter(key, Dic_Param[key]));
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(Tuple.Create(Convert.ToString(reader["tor_codigo"]), Convert.ToString(reader["cfc_codigo"]), Convert.ToString(reader["not_codigo"])));
                         }
                         reader.Close();
                     }
