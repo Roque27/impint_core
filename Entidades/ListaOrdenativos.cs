@@ -13,19 +13,13 @@ namespace Entidades
         {
         }
 
-        public void CompletarDatosGeograficos(List<Tuple<string, string, string>> notCodigos)
+        public void CompletarDatosGeograficos(Dictionary<string, Direccion> direcciones)
         {
             if (this.Ordenativos != null && this.Ordenativos.Count > 0)
             {
-                foreach (Ordenativo o in Ordenativos)
+                foreach (Ordenativo o in this.Ordenativos)
                 {
-                    //personas.prs_numero
-
-                    //contratos.srv_codigo
-                    //contratos.cnt_numero
-
-                    //contratos.srv_codigo
-                    //contratos.cnt_numero
+                    o.datos_geograficos = direcciones[o.rowid];
                 }
             }
         }
@@ -34,11 +28,10 @@ namespace Entidades
         {
             if(this.Ordenativos != null && this.Ordenativos.Count > 0)
             {
-                foreach(Ordenativo o in Ordenativos)
+                foreach(Ordenativo o in this.Ordenativos)
                 {
                     o.not_codigo = notCodigos.Where(n => n.Item1.Equals(o.tor_codigo) && n.Item2.Equals(o.datos_geograficos.cfc_codigo.Equals(n.Item2)))
                         .Select(n => n.Item3).FirstOrDefault();
-
                 }
             }
         }

@@ -24,9 +24,18 @@ namespace Entidades
 
         public string not_codigo { get; set; } //ObtenerNotCodigo
 
+        public TipoDireccion tipoDireccion { get; set; }
         public Direccion datos_geograficos { get; set; }
 
         public List<Elemento> listaColumnas{ get; set; }
+
+        //personas.prs_numero
+
+        //contratos.srv_codigo
+        //contratos.cnt_numero
+
+        //contratos.srv_codigo
+        //contratos.cnt_numero
 
         public Ordenativo()
         {
