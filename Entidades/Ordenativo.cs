@@ -29,14 +29,6 @@ namespace Entidades
 
         public List<Elemento> listaColumnas{ get; set; }
 
-        //personas.prs_numero
-
-        //contratos.srv_codigo
-        //contratos.cnt_numero
-
-        //contratos.srv_codigo
-        //contratos.cnt_numero
-
         public Ordenativo()
         {
             this.datos_geograficos = new Direccion();

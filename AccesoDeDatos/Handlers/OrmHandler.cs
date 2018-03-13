@@ -67,21 +67,22 @@ namespace AccesoDeDatos.Handlers
                         {
                             lista.Add(new Ordenativo
                             {
-                                trt_numero = Convert.ToInt32(reader["cpr_numero"]),
-                                ord_numero = Convert.ToInt32(reader["cpr_numero"]),
-                                srv_codigo = Convert.ToInt32(reader["cpr_numero"]),
-                                cnt_numero = Convert.ToInt32(reader["cpr_numero"]),
-                                tor_codigo = Convert.ToString(reader["tim_codigo"]),
-                                ord_fecha_generacion = Convert.ToDateTime(reader["cpr_numero"]),
-                                scf_codigo = Convert.ToInt32(reader["cpr_numero"]),
-                                sec_codigo_origen = Convert.ToString(reader["tim_codigo"]),
-                                tor_grupo = Convert.ToString(reader["tim_codigo"]),
-                                tor_descripcion = Convert.ToString(reader["tim_codigo"]).Trim(),
-                                prs_numero = Convert.ToInt32(reader["cpr_numero"]),
-                                rowid = Convert.ToString(reader["tim_codigo"]),
-                                crr_tipo = Convert.ToString(reader["tim_codigo"]),
-                                crr_codigo = Convert.ToString(reader["tim_codigo"]),
-                                nro_aviso = Convert.ToString(reader["numero"])
+                                trt_numero = Convert.ToInt32(reader["trt_numero"]),
+                                ord_numero = Convert.ToInt32(reader["ord_numero"]),
+                                srv_codigo = Convert.ToInt32(reader["srv_codigo"]),
+                                cnt_numero = Convert.ToInt32(reader["cnt_numero"]),
+                                tor_codigo = Convert.ToString(reader["tor_codigo"]),
+                                ord_fecha_generacion = Convert.ToDateTime(reader["ord_fecha_generacion"]),
+                                scf_codigo = Convert.ToInt32(reader["scf_codigo"]),
+                                sec_codigo_origen = Convert.ToString(reader["sec_codigo_origen"]),
+                                tor_grupo = Convert.ToString(reader["tor_grupo"]),
+                                tor_descripcion = Convert.ToString(reader["tor_descripcion"]).Trim(),
+                                prs_numero = Convert.ToInt32(reader["prs_numero"]),
+                                rowid = Convert.ToString(reader["rowid"]),
+                                crr_tipo = Convert.ToString(reader["crr_tipo"]),
+                                crr_codigo = Convert.ToString(reader["crr_codigo"]),
+                                nro_aviso = Convert.ToString(reader["nro_aviso"]),
+                                tipoDireccion = (reader["srv_codigo"] != DBNull.Value? TipoDireccion.ConContrato : TipoDireccion.ConContrato)
                             });
                         }
                         reader.Close();
@@ -120,10 +121,10 @@ namespace AccesoDeDatos.Handlers
             return lista;
         }
 
-        static public List<Tuple<string, string, string>> GetOrmOrdenativosDatosGeograficos(string StrSql, Dictionary<string, object> Dic_Param)
+        static public List<Direccion> GetOrmOrdenativosDatosGeograficos(string StrSql, Dictionary<string, object> Dic_Param)
         {
             string ConnStr = ConeccionBBDD;
-            List<Tuple<string, string, string>> lista = new List<Tuple<string, string, string>>();
+            List<Direccion> lista = new List<Direccion>();
 
             using (OracleConnection connection = new OracleConnection(ConnStr))
             {
