@@ -12,7 +12,7 @@ namespace Entidades
         public int srv_codigo { get; set; }
         public int cnt_numero { get; set; }
         public string tor_codigo { get; set; }
-        public DateTime ord_fecha_generacion { get; set; }
+        public string ord_fecha_generacion { get; set; }
         public int scf_codigo { get; set; }
         public string sec_codigo_origen { get; set; }
         public string tor_grupo { get; set; }

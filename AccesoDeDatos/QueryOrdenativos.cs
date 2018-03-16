@@ -16,34 +16,36 @@ namespace AccesoDeDatos
         {
             List<Ordenativo> lista = new List<Ordenativo>();
 
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
             //SELECT o.trt_numero
             //	,o.ord_numero
-            //	,o.srv_codigo AS SRV_CODIGO
+            //	,o.srv_codigo
             //	,o.cnt_numero
-            //	,nvl(o.tor_codigo, '') AS TOR_CODIGO
-            //    , to_char(o.ord_fecha_generacion, 'dd/mm/yyyy') AS ORD_FECHA_GENERACION
-            //     , u.scf_codigo
-            //	,COALESCE(o.sec_codigo_origen, '0') AS SEC_CODIGO_ORIGEN
-            //    , COALESCE(t.tor_grupo, '0') AS TOR_GRUPO
-            //     , t.tor_descripcion
-            //	,COALESCE(o.prs_numero, 0) AS PRS_NUMERO
+            //	,o.tor_codigo
+            //    ,o.ord_fecha_generacion
+            //    ,u.scf_codigo
+            //	,o.sec_codigo_origen
+            //    ,t.tor_grupo
+            //    ,t.tor_descripcion
+            //	,o.prs_numero
             //    , o.rowid
             //	,o.crr_tipo
             //	,o.crr_codigo
             //	,NVL((MAX(cad_numero) OVER(PARTITION BY cd.cad_tipo)) + 1, o.ord_numero || '0') AS numero
             //FROM ordenativos o
             //INNER JOIN tipos_ordenativo t ON o.tor_codigo = t.tor_codigo
-            //LEFT JOIN cancel_deuda cd 
+            //LEFT JOIN cancel_deuda cd
             //    ON cd.aviso_nro = o.ord_numero
             //    AND cd.cad_tipo = o.tor_codigo
             //CROSS JOIN usuarios u
-            //WHERE t.tor_codigo = '@'
-            //  AND u.usr_codigo = '@'
-            //  AND o.scf_codigo_origen = '@'
-            //  AND o.sec_codigo_origen = '@'
-            //  AND o.ord_numero BETWEEN '@' AND '@'
-            //  AND o.crr_tipo = '@'
-            //  AND o.crr_codigo = '@'
+            //WHERE t.tor_codigo = '@tor_codigo'
+            //  AND u.usr_codigo = '@usr_codigo'
+            //  AND o.scf_codigo_origen = '@scf_codigo'
+            //  AND o.sec_codigo_origen = '@sec_codigo'
+            //  AND o.ord_numero BETWEEN '@min_ord_num' AND '@max_ord_num'
+            //  AND o.crr_tipo = '@crr_tipo'
+            //  AND o.crr_codigo = '@crr_codigo'
             //  AND o.ord_situacion = 'P'
             //  AND o.ord_estado = 'D'
             //ORDER BY o.ord_numero
@@ -77,6 +79,7 @@ namespace AccesoDeDatos
             //         , nvl(personas.prs_c_postal, ' ') AS c_postal
             //          , nvl(areas_geograficas.agf_nombre, ' ') AS agf_nombre
             //           , NULL AS cnt_direccion_pago
+            //          , '@rowid' AS rowid
             //FROM areas_geograficas
             //INNER JOIN personas ON areas_geograficas.agf_codigo = personas.agf_codigo
             //INNER JOIN calles ON calles.cll_codigo = personas.cll_codigo
@@ -99,6 +102,7 @@ namespace AccesoDeDatos
             //         , COALESCE(nvl(contratos.cnt_c_postal_pago, ' '), '0') AS c_postal
             //          , nvl(areas_geograficas.agf_nombre, ' ') AS agf_nombre
             //           , NULL AS cnt_direccion_pago
+            //          , '@rowid' AS rowid
             //FROM areas_geograficas
             //INNER JOIN contratos ON areas_geograficas.agf_codigo = contratos.agf_codigo
             //INNER JOIN personas ON personas.prs_numero = contratos.prs_numero
@@ -125,6 +129,7 @@ namespace AccesoDeDatos
             //	,NULL AS c_postal
             //	,NULL AS agf_nombre
             //	,COALESCE(substr(nvl(regexp_replace(contratos.cnt_direccion_pago, '[[:space:]]+', chr(32)), ' '), 1, 27), '0') AS cnt_direccion_pago
+            //          , '@rowid' AS rowid
             //FROM contratos
             //INNER JOIN personas ON personas.prs_numero = contratos.prs_numero
             //WHERE contratos.srv_codigo = '@'

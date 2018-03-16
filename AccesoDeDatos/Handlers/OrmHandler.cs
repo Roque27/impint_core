@@ -72,12 +72,12 @@ namespace AccesoDeDatos.Handlers
                                 srv_codigo = Convert.ToInt32(reader["srv_codigo"]),
                                 cnt_numero = Convert.ToInt32(reader["cnt_numero"]),
                                 tor_codigo = Convert.ToString(reader["tor_codigo"]),
-                                ord_fecha_generacion = Convert.ToDateTime(reader["ord_fecha_generacion"]),
+                                ord_fecha_generacion = reader.ReadDateTimeString("ord_fecha_generacion", "dd/mm/yyyy"),
                                 scf_codigo = Convert.ToInt32(reader["scf_codigo"]),
-                                sec_codigo_origen = Convert.ToString(reader["sec_codigo_origen"]),
-                                tor_grupo = Convert.ToString(reader["tor_grupo"]),
+                                sec_codigo_origen = reader.ReadFullInt("sec_codigo_origen").ToString(),
+                                tor_grupo = reader.ReadFullInt("tor_grupo").ToString(),
                                 tor_descripcion = Convert.ToString(reader["tor_descripcion"]).Trim(),
-                                prs_numero = Convert.ToInt32(reader["prs_numero"]),
+                                prs_numero = reader.ReadFullInt("prs_numero"),
                                 rowid = Convert.ToString(reader["rowid"]),
                                 crr_tipo = Convert.ToString(reader["crr_tipo"]),
                                 crr_codigo = Convert.ToString(reader["crr_codigo"]),
@@ -139,7 +139,22 @@ namespace AccesoDeDatos.Handlers
                     {
                         while (reader.Read())
                         {
-                            lista.Add(Tuple.Create(Convert.ToString(reader["tor_codigo"]), Convert.ToString(reader["cfc_codigo"]), Convert.ToString(reader["not_codigo"])));
+                            lista.Add(new Direccion {
+                                prs_numero = Convert.ToInt32(reader["prs_numero"]),
+                                prs_razon_social = Convert.ToString(reader["prs_razon_social"]).Trim(),
+                                prs_direccion = Convert.ToString(reader["prs_direccion"]).Trim(),
+                                cfc_codigo = Convert.ToString(reader["cfc_codigo"]).Trim(),
+                                calle_nombre = Convert.ToString(reader["cll_nombre"]).Trim(),
+                                calle_numero = Convert.ToString(reader["nro"]).Trim(),
+                                calle_bis = Convert.ToString(reader["bis"]).Trim(),
+                                piso = Convert.ToString(reader["piso"]).Trim(),
+                                departamento = Convert.ToString(reader["depto"]).Trim(),
+                                torre = Convert.ToString(reader["torre"]).Trim(),
+                                cod_postal = Convert.ToString(reader["c_postal"]),
+                                agf_nombre = Convert.ToString(reader["agf_nombre"]).Trim(),
+                                direccion_completa = Convert.ToString(reader["cnt_direccion_pago"]).Trim(),
+                                rowid = Convert.ToString(reader["rowid"])
+                            });
                         }
                         reader.Close();
                     }
