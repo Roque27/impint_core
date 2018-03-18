@@ -15,39 +15,38 @@ namespace AccesoDeDatos
 
         public List<Ordenativo> ObtenerOrdenativoParaProcesar(string tipoAviso, string usuario, string csf, string sec, int minOrdenativo, int maxOrdenativo, string tipoCorreo, string codigoCorreo)
         {
-            ListaOrdenativos lista = new ListaOrdenativos();
-
+            string queryDB = string.Empty;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            string queryDB = ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + ""
-                           + "";
+            queryDB = ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + ""
+                    + "";
 
             parameters.Add("@tor_codigo", tipoAviso);
             parameters.Add("@usr_codigo", usuario);
@@ -90,10 +89,18 @@ namespace AccesoDeDatos
             //  AND o.ord_estado = 'D'
             //ORDER BY o.ord_numero
 
-            lista.Ordenativos.AddRange(OrmHandler.GetOrmOrdenativosBase(queryDB, parameters));
-            lista.CompletarDatosGeograficos(OrmHandler.GetOrmOrdenativosDatosGeograficos(queryDB, parameters));
-            1
-            return lista;
+            ListaOrdenativos lista = new ListaOrdenativos(OrmHandler.GetOrmOrdenativosBase(queryDB, parameters));
+
+            lista.CompletarDatosGeograficos(ObtenerDatosGeograficos(lista.ObtenerLista()));
+
+            parameters.Clear();
+            queryDB = "";
+
+            parameters.Add("", string.Empty);
+
+            lista.CompletarNotCodigos(OrmHandler.GetOrmOrdenativosNotCodigo(queryDB, parameters));
+
+            return lista.ObtenerLista();
         }
 
         public DateTime PruebaConeccion()
@@ -107,8 +114,13 @@ namespace AccesoDeDatos
             return dt;
         }
 
-        public void ObtenerDatosGeograficos()
+        public Dictionary<string, Direccion> ObtenerDatosGeograficos(List<Ordenativo> lista)
         {
+            string queryDB = string.Empty;
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            queryDB = "";
+
             //SELECT personas.prs_numero
             //	,substr(personas.prs_razon_social, 1, 25) AS prs_razon_social
             //    , nvl(personas.prs_direccion, ' ') AS prs_direccion
@@ -179,7 +191,7 @@ namespace AccesoDeDatos
             //
             //    AND contratos.cnt_numero = '@'
 
-            return;
+            return OrmHandler.GetOrmOrdenativosDatosGeograficos(queryDB, parameters);
         }
     }
 }

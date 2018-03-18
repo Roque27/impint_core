@@ -121,10 +121,10 @@ namespace AccesoDeDatos.Handlers
             return lista;
         }
 
-        static public List<Direccion> GetOrmOrdenativosDatosGeograficos(string StrSql, Dictionary<string, object> Dic_Param)
+        static public Dictionary<string, Direccion> GetOrmOrdenativosDatosGeograficos(string StrSql, Dictionary<string, object> Dic_Param)
         {
             string ConnStr = ConeccionBBDD;
-            List<Direccion> lista = new List<Direccion>();
+            Dictionary<string, Direccion> lista = new Dictionary<string, Direccion>();
 
             using (OracleConnection connection = new OracleConnection(ConnStr))
             {
@@ -139,7 +139,8 @@ namespace AccesoDeDatos.Handlers
                     {
                         while (reader.Read())
                         {
-                            lista.Add(new Direccion {
+                            lista.Add(Convert.ToString(reader["rowid"]), new Direccion
+                            {
                                 prs_numero = Convert.ToInt32(reader["prs_numero"]),
                                 prs_razon_social = Convert.ToString(reader["prs_razon_social"]).Trim(),
                                 prs_direccion = Convert.ToString(reader["prs_direccion"]).Trim(),
@@ -152,8 +153,7 @@ namespace AccesoDeDatos.Handlers
                                 torre = Convert.ToString(reader["torre"]).Trim(),
                                 cod_postal = Convert.ToString(reader["c_postal"]),
                                 agf_nombre = Convert.ToString(reader["agf_nombre"]).Trim(),
-                                direccion_completa = Convert.ToString(reader["cnt_direccion_pago"]).Trim(),
-                                rowid = Convert.ToString(reader["rowid"])
+                                direccion_completa = Convert.ToString(reader["cnt_direccion_pago"]).Trim()
                             });
                         }
                         reader.Close();

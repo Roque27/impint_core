@@ -7,11 +7,14 @@ namespace Entidades
 {
     public class ListaOrdenativos
     {
-        public List<Ordenativo> Ordenativos { get; set; }
+        private List<Ordenativo> Ordenativos;
 
-        public ListaOrdenativos()
+        public ListaOrdenativos(List<Ordenativo> lista)
         {
-            this.Ordenativos = new List<Ordenativo>();
+            if (lista != null && lista.Count > 0)
+                this.Ordenativos.AddRange(lista);
+            else
+                this.Ordenativos = new List<Ordenativo>();
         }
 
         public void CompletarDatosGeograficos(Dictionary<string, Direccion> direcciones)
@@ -35,6 +38,11 @@ namespace Entidades
                         .Select(n => n.Item3).FirstOrDefault();
                 }
             }
+        }
+
+        public List<Ordenativo> ObtenerLista()
+        {
+            return this.Ordenativos;
         }
     }
 }
