@@ -11,6 +11,7 @@ namespace Entidades
 
         public ListaOrdenativos()
         {
+            this.Ordenativos = new List<Ordenativo>();
         }
 
         public void CompletarDatosGeograficos(Dictionary<string, Direccion> direcciones)

@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using AccesoDeDatos.Handlers;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,11 +13,50 @@ namespace AccesoDeDatos
             
         }
 
-        public List<Ordenativo> ObtenerOrdenativoParaProcesar()
+        public List<Ordenativo> ObtenerOrdenativoParaProcesar(string tipoAviso, string usuario, string csf, string sec, int minOrdenativo, int maxOrdenativo, string tipoCorreo, string codigoCorreo)
         {
-            List<Ordenativo> lista = new List<Ordenativo>();
+            ListaOrdenativos lista = new ListaOrdenativos();
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            string queryDB = ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + ""
+                           + "";
+
+            parameters.Add("@tor_codigo", tipoAviso);
+            parameters.Add("@usr_codigo", usuario);
+            parameters.Add("@scf_codigo", csf);
+            parameters.Add("@sec_codigo", sec);
+            parameters.Add("@min_ord_num", minOrdenativo);
+            parameters.Add("@max_ord_num", maxOrdenativo);
+            parameters.Add("@crr_tipo", tipoCorreo);
+            parameters.Add("@crr_codigo", codigoCorreo);
 
             //SELECT o.trt_numero
             //	,o.ord_numero
@@ -50,6 +90,9 @@ namespace AccesoDeDatos
             //  AND o.ord_estado = 'D'
             //ORDER BY o.ord_numero
 
+            lista.Ordenativos.AddRange(OrmHandler.GetOrmOrdenativosBase(queryDB, parameters));
+            lista.CompletarDatosGeograficos(OrmHandler.GetOrmOrdenativosDatosGeograficos(queryDB, parameters));
+            1
             return lista;
         }
 
