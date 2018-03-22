@@ -27,9 +27,15 @@ namespace Core
             }
         }
 
-        public DateTime Test()
+        public object Test()
         {
-            return Queryes.PruebaConeccion();
+            //Queryes.PruebaConeccion();
+
+            //var t = Queryes.PruebaParametros("334126");
+
+            Queryes.ObtenerOrdenativoParaProcesar("I1", "LSANTOS", "12", "GESCOB", 3500000, 6000000, "CO", "SEND");
+
+            return "final";      
         }
     }
 }

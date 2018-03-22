@@ -1,5 +1,6 @@
 ﻿using Core;
 using System;
+using System.Data;
 
 namespace Launcher
 {
@@ -9,9 +10,19 @@ namespace Launcher
         {
             Startup startup = new Startup();
 
-            ControladorMaestro c = new ControladorMaestro();
+            ControladorOrdenativos c = new ControladorOrdenativos();
 
-            var cache = c.ObtenerCacheDeElementos();
+            DataTable dt = c.Test() as DataTable;
+
+            foreach (DataRow r in dt.Rows)
+            {
+                Console.WriteLine(r["SRV_CODIGO"].ToString());
+                Console.WriteLine(r["SCF_CODIGO"].ToString());
+                Console.WriteLine(r["AGE_CODIGO"].ToString());
+                Console.WriteLine(r["AGF_CODIGO"].ToString());
+            }
+
+            //var cache = c.ObtenerCacheDeElementos();
         }
     }
 }

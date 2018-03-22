@@ -74,7 +74,7 @@ namespace AccesoDeDatos.Handlers
                                 tor_codigo = Convert.ToString(reader["tor_codigo"]),
                                 ord_fecha_generacion = reader.ReadDateTimeString("ord_fecha_generacion", "dd/mm/yyyy"),
                                 scf_codigo = Convert.ToInt32(reader["scf_codigo"]),
-                                sec_codigo_origen = reader.ReadFullInt("sec_codigo_origen").ToString(),
+                                sec_codigo_origen = reader.ReadFullString("sec_codigo_origen"),
                                 tor_grupo = reader.ReadFullInt("tor_grupo").ToString(),
                                 tor_descripcion = Convert.ToString(reader["tor_descripcion"]).Trim(),
                                 prs_numero = reader.ReadFullInt("prs_numero"),

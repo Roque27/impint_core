@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace AccesoDeDatos
@@ -18,87 +19,55 @@ namespace AccesoDeDatos
             string queryDB = string.Empty;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            queryDB = ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + "";
+            queryDB = "SELECT o.trt_numero"
+                    + " ,o.ord_numero"
+                    + " ,o.srv_codigo"
+                    + " ,o.cnt_numero"
+                    + " ,o.tor_codigo"
+                    + " ,o.ord_fecha_generacion"
+                    + " ,u.scf_codigo"
+                    + " ,o.sec_codigo_origen"
+                    + " ,t.tor_grupo"
+                    + " ,t.tor_descripcion"
+                    + " ,o.prs_numero"
+                    + " ,o.rowid"
+                    + " ,o.crr_tipo"
+                    + " ,o.crr_codigo"
+                    + " ,NVL((MAX(cad_numero) OVER(PARTITION BY cd.cad_tipo)) + 1, o.ord_numero || '0') AS numero"
+                    + " FROM ordenativos o"
+                    + " INNER JOIN tipos_ordenativo t ON o.tor_codigo = t.tor_codigo"
+                    + " LEFT JOIN cancel_deuda cd ON (cd.aviso_nro = o.ord_numero AND cd.cad_tipo = o.tor_codigo)"
+                    + " CROSS JOIN usuarios u"
+                    + " WHERE t.tor_codigo = :v_tor_codigo"
+                    + " AND u.usr_codigo = :v_usr_codigo"
+                    + " AND o.scf_codigo_origen = :v_scf_codigo"
+                    + " AND o.sec_codigo_origen = :v_sec_codigo"
+                    + " AND o.ord_numero BETWEEN :v_min_ord_num AND :v_max_ord_num"
+                    + " AND o.crr_tipo = :v_crr_tipo"
+                    + " AND o.crr_codigo = :v_crr_codigo"
+                    + " AND o.ord_situacion = 'P'"
+                    + " AND o.ord_estado = 'D'"
+                    + " ORDER BY o.ord_numero";
 
-            parameters.Add("@tor_codigo", tipoAviso);
-            parameters.Add("@usr_codigo", usuario);
-            parameters.Add("@scf_codigo", csf);
-            parameters.Add("@sec_codigo", sec);
-            parameters.Add("@min_ord_num", minOrdenativo);
-            parameters.Add("@max_ord_num", maxOrdenativo);
-            parameters.Add("@crr_tipo", tipoCorreo);
-            parameters.Add("@crr_codigo", codigoCorreo);
-
-            //SELECT o.trt_numero
-            //	,o.ord_numero
-            //	,o.srv_codigo
-            //	,o.cnt_numero
-            //	,o.tor_codigo
-            //    ,o.ord_fecha_generacion
-            //    ,u.scf_codigo
-            //	,o.sec_codigo_origen
-            //    ,t.tor_grupo
-            //    ,t.tor_descripcion
-            //	,o.prs_numero
-            //    , o.rowid
-            //	,o.crr_tipo
-            //	,o.crr_codigo
-            //	,NVL((MAX(cad_numero) OVER(PARTITION BY cd.cad_tipo)) + 1, o.ord_numero || '0') AS numero
-            //FROM ordenativos o
-            //INNER JOIN tipos_ordenativo t ON o.tor_codigo = t.tor_codigo
-            //LEFT JOIN cancel_deuda cd
-            //    ON cd.aviso_nro = o.ord_numero
-            //    AND cd.cad_tipo = o.tor_codigo
-            //CROSS JOIN usuarios u
-            //WHERE t.tor_codigo = '@tor_codigo'
-            //  AND u.usr_codigo = '@usr_codigo'
-            //  AND o.scf_codigo_origen = '@scf_codigo'
-            //  AND o.sec_codigo_origen = '@sec_codigo'
-            //  AND o.ord_numero BETWEEN '@min_ord_num' AND '@max_ord_num'
-            //  AND o.crr_tipo = '@crr_tipo'
-            //  AND o.crr_codigo = '@crr_codigo'
-            //  AND o.ord_situacion = 'P'
-            //  AND o.ord_estado = 'D'
-            //ORDER BY o.ord_numero
+            parameters.Add("v_tor_codigo", tipoAviso);
+            parameters.Add("v_usr_codigo", usuario);
+            parameters.Add("v_scf_codigo", csf);
+            parameters.Add("v_sec_codigo", sec);
+            parameters.Add("v_min_ord_num", minOrdenativo);
+            parameters.Add("v_max_ord_num", maxOrdenativo);
+            parameters.Add("v_crr_tipo", tipoCorreo);
+            parameters.Add("v_crr_codigo", codigoCorreo);
 
             ListaOrdenativos lista = new ListaOrdenativos(OrmHandler.GetOrmOrdenativosBase(queryDB, parameters));
 
-            lista.CompletarDatosGeograficos(ObtenerDatosGeograficos(lista.ObtenerLista()));
+            //lista.CompletarDatosGeograficos(ObtenerDatosGeograficos(lista.ObtenerLista()));
 
             parameters.Clear();
             queryDB = "";
 
             parameters.Add("", string.Empty);
 
-            lista.CompletarNotCodigos(OrmHandler.GetOrmOrdenativosNotCodigo(queryDB, parameters));
+            //lista.CompletarNotCodigos(OrmHandler.GetOrmOrdenativosNotCodigo(queryDB, parameters));
 
             return lista.ObtenerLista();
         }
@@ -112,6 +81,26 @@ namespace AccesoDeDatos
 
             DateTime dt = Convert.ToDateTime(QueryHandler.ExecuteScalar(queryDB, parameters));
             return dt;
+        }
+
+        public DataTable PruebaParametros(string id)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("v_srv_cod", id);
+
+            string queryDB = "SELECT * "
+                            +"FROM SERVICIOS "
+                            +"WHERE SRV_CODIGO = :v_srv_cod ";
+
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add("SRV_CODIGO");
+            tabla.Columns.Add("SCF_CODIGO");
+            tabla.Columns.Add("AGE_CODIGO");
+            tabla.Columns.Add("AGF_CODIGO");
+            tabla = QueryHandler.ExecuteQuery(queryDB, parameters);
+
+            return tabla;
         }
 
         public Dictionary<string, Direccion> ObtenerDatosGeograficos(List<Ordenativo> lista)
