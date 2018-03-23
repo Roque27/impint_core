@@ -75,13 +75,13 @@ namespace AccesoDeDatos.Handlers
                                 ord_fecha_generacion = reader.ReadDateTimeString("ord_fecha_generacion", "dd/mm/yyyy"),
                                 scf_codigo = Convert.ToInt32(reader["scf_codigo"]),
                                 sec_codigo_origen = reader.ReadFullString("sec_codigo_origen"),
-                                tor_grupo = reader.ReadFullInt("tor_grupo").ToString(),
+                                tor_grupo = reader.ReadFullString("tor_grupo"),
                                 tor_descripcion = Convert.ToString(reader["tor_descripcion"]).Trim(),
                                 prs_numero = reader.ReadFullInt("prs_numero"),
                                 rowid = Convert.ToString(reader["rowid"]),
                                 crr_tipo = Convert.ToString(reader["crr_tipo"]),
                                 crr_codigo = Convert.ToString(reader["crr_codigo"]),
-                                nro_aviso = Convert.ToString(reader["nro_aviso"]),
+                                nro_aviso = Convert.ToString(reader["numero"]),
                                 tipoDireccion = (reader["srv_codigo"] != DBNull.Value? TipoDireccion.ConContrato : TipoDireccion.ConContrato)
                             });
                         }
